@@ -2,15 +2,19 @@
 #include <iostream>
 #include <list>
 
+struct Domino {
+	std::string left;
+	std::string right;
+};
+
 class Collection
 {
 private:
-	struct Domino;
-	Domino* start;
+	//Domino first;
 	std::list<Domino> unsorted;
 	std::list<Domino> sorted;
 public:
-	Collection(Domino*, std::list<Domino>);
+	Collection(Domino&, std::list<Domino>&);
 	Domino placeRight();
 	Domino placeLeft();
 	bool isCompleted();

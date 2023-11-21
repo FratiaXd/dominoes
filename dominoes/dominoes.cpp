@@ -2,9 +2,16 @@
 //
 
 #include <iostream>
+#include "collection.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::list<Domino> dominoes = {
+        {"club", "diamond"}, {"heart", "spade"}, {"spade", "club"}
+    };
+    Domino one({ "diamond", "heart" });
+    Collection dominoLine(one, dominoes);
+    dominoLine.placeRight();
+    dominoLine.displayCollection();
 }
 

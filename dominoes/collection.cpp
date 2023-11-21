@@ -1,25 +1,36 @@
 #include "collection.h"
 #include <string>
 
-struct Collection::Domino
-{
-	std::string left;
-	std::string right;
-};
+//struct Collection::Domino
+//{
+//	std::string left;
+//	std::string right;
+//};
 
-Collection::Collection(Domino* start, std::list<Domino> dominoes)
+Collection::Collection(Domino& start, std::list<Domino>& dominoes)
 {
-	start = start;
+	sorted.push_front(start);
 	unsorted = dominoes;
 }
 
-Collection::Domino Collection::placeRight()
+Domino Collection::placeRight()
 {
-
+	if (unsorted.empty()) {
+		return { "", "" };
+	}
+	for (Domino i : unsorted) {
+		if (sorted.back().right == i.left) {
+			sorted.push_back(i);
+			return i;
+		}
+	}
 }
 
-Collection::Domino Collection::placeLeft()
+Domino Collection::placeLeft()
 {
+	if (unsorted.empty()) {
+		return { "", "" };
+	}
 
 }
 
@@ -30,5 +41,7 @@ bool Collection::isCompleted()
 
 void Collection::displayCollection()
 {
-
+	for (Domino i : sorted) {
+		std::cout << i.left << " " << i.right << std::endl;
+	}
 }
