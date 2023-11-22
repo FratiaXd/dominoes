@@ -11,7 +11,12 @@ int main()
     };
     Domino one({ "diamond", "heart" });
     Collection dominoLine(one, dominoes);
+    
     dominoLine.placeRight();
+    dominoLine.placeLeft();
+    dominoLine.placeLeft();
+    std::cout << std::endl;
     dominoLine.displayCollection();
+
 }
 

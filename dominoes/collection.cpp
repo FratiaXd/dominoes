@@ -15,18 +15,11 @@ Collection::Collection(Domino& start, std::list<Domino>& dominoes)
 
 Domino Collection::placeRight()
 {
-	//FIND DOMINO
-	//compare to each domino in unsorted
-	//compare to both sides
-	//ADD DOMINO
-	//if the opposite side is correct then swap
-	//if match then push back that domino to sorted
-	//erase from unsorted
 	if (unsorted.empty()) {
 		return { "", "" };
 	}
 	std::list<Domino>::iterator it = findDomino(sorted.back().right, true);
-
+	return addDomino(it, true);
 }
 
 Domino Collection::placeLeft()
@@ -34,13 +27,12 @@ Domino Collection::placeLeft()
 	if (unsorted.empty()) {
 		return { "", "" };
 	}
-
+	std::list<Domino>::iterator it = findDomino(sorted.front().left, false);
+	return addDomino(it, false);
 }
 
 std::list<Domino>::iterator Collection::findDomino(std::string& end, bool isDirectionRight)
 {
-	//find any domino side
-	//then swap
 	std::list<Domino>::iterator it;
 	for (it = unsorted.begin(); it != unsorted.end(); ++it) {
 		if (it->left == end || it->right == end) {
@@ -51,9 +43,28 @@ std::list<Domino>::iterator Collection::findDomino(std::string& end, bool isDire
 
 Domino Collection::addDomino(std::list<Domino>::iterator it, bool isDirectionRight)
 {
-	if (isDirectionRight && it->left == sorted.back().right) {
+	if (it != unsorted.end()) {
+		if ((isDirectionRight && it->right == sorted.back().right) || (!isDirectionRight && it->left == sorted.front().left)) {
+			std::swap(it->left, it->right);
+		}
 
+		if (isDirectionRight) {
+			sorted.push_back(*it);
+		} else {
+			sorted.push_front(*it);
+		}
+
+		unsorted.erase(it);
+		
+		if (isDirectionRight) {
+			std::cout << sorted.back().left << " " << sorted.back().right << std::endl;
+			return sorted.back();
+		} else {
+			std::cout << sorted.front().left << " " << sorted.front().right << std::endl;
+			return sorted.front();
+		}
 	}
+	return { "", "" };
 }
 
 bool Collection::isCompleted()
