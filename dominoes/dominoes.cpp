@@ -6,20 +6,6 @@
 
 int main()
 {
-    /*std::list<Domino> dominoes = {
-        {"club", "diamond"}, {"heart", "spade"}, {"spade", "club"}
-    };
-    Domino one({ "diamond", "heart" });
-    Collection dominoLine(one, dominoes);
-    
-    dominoLine.placeRight();
-    dominoLine.placeLeft();
-    dominoLine.placeLeft();
-    dominoLine.placeLeft();
-    std::cout << dominoLine.isCompleted() << std::endl;
-    std::cout << std::endl;
-    dominoLine.displayCollection();*/
-
     Collection d("C:/Users/Owner/Documents/UNI_Y3/SOFT_ENG/dominoes-test_data/1K/1K-starting-domino.txt",
         "C:/Users/Owner/Documents/UNI_Y3/SOFT_ENG/dominoes-test_data/1K/1K-input-uncoloured.txt");
 

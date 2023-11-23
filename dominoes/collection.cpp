@@ -10,6 +10,7 @@ void Collection::sortCollection()
 {
 	if (unsorted.empty()) {
 		std::cout << "Collection not found" << std::endl;
+		return;
 	}
 	while (!isCompleted()) {
 		placeLeft();
@@ -86,9 +87,13 @@ void Collection::displayCollection()
 
 std::list<Domino> Collection::readFiles(std::string dominoPath)
 {
-	std::string text;
 	std::ifstream filehandle{ dominoPath };
 	std::list<Domino> fileDominoes;
+	if (filehandle.fail()) {
+		std::cout << "Specified file does not exist" << std::endl;
+		return fileDominoes;
+	}
+	std::string text;
 	while (std::getline(filehandle, text)) {
 		Domino a = readDomino(text);
 		fileDominoes.push_back(a);
