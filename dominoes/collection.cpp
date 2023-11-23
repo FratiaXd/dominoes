@@ -81,7 +81,7 @@ bool Collection::isCompleted()
 void Collection::displayCollection()
 {
 	for (Domino i : sorted) {
-		std::cout << i.left << " " << i.right << std::endl;
+		std::cout << i.left << ":" << i.right << " ";
 	}
 }
 
