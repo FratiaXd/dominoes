@@ -1,16 +1,21 @@
 #include "collection.h"
 
-//struct Collection::Domino
-//{
-//	std::string left;
-//	std::string right;
-//};
-
-
 Collection::Collection(std::string firstDominoPath, std::string restDominoPath)
 {
 	sorted = readFiles(firstDominoPath);
 	unsorted = readFiles(restDominoPath);
+}
+
+void Collection::sortCollection() 
+{
+	if (unsorted.empty()) {
+		std::cout << "Collection not found" << std::endl;
+	}
+	while (!isCompleted()) {
+		placeLeft();
+		placeRight();
+	}
+	displayCollection();
 }
 
 Domino Collection::placeRight()
@@ -57,14 +62,14 @@ Domino Collection::addDomino(std::list<Domino>::iterator it, bool isDirectionRig
 		unsorted.erase(it);
 		
 		if (isDirectionRight) {
-			std::cout << sorted.back().left << " " << sorted.back().right << std::endl;
+			//std::cout << sorted.back().left << " " << sorted.back().right << std::endl;
 			return sorted.back();
 		} else {
-			std::cout << sorted.front().left << " " << sorted.front().right << std::endl;
+			//std::cout << sorted.front().left << " " << sorted.front().right << std::endl;
 			return sorted.front();
 		}
 	}
-	return { "", "" };
+	return {};
 }
 
 bool Collection::isCompleted()
@@ -87,7 +92,7 @@ std::list<Domino> Collection::readFiles(std::string dominoPath)
 	while (std::getline(filehandle, text)) {
 		Domino a = readDomino(text);
 		fileDominoes.push_back(a);
-		std::cout << a.left << "  " << a.right << std::endl;
+		//std::cout << a.left << "  " << a.right << std::endl;
 	}
 	return fileDominoes;
 }

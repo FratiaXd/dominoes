@@ -22,6 +22,7 @@ private:
 	Domino readDomino(std::string);
 public:
 	Collection(std::string, std::string);
+	void sortCollection();
 	Domino placeRight();
 	Domino placeLeft();
 	bool isCompleted();
