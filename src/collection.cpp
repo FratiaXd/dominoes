@@ -1,4 +1,4 @@
-#include "collection.h"
+#include "../headers/collection.h"
 
 Collection::Collection(std::string firstDominoPath, std::string restDominoPath)
 {
@@ -6,7 +6,7 @@ Collection::Collection(std::string firstDominoPath, std::string restDominoPath)
 	unsorted = readFiles(restDominoPath);
 }
 
-void Collection::sortCollection() 
+void Collection::sortCollection()
 {
 	if (unsorted.empty()) {
 		std::cout << "Collection not found" << std::endl;
@@ -56,16 +56,18 @@ Domino Collection::addDomino(std::list<Domino>::iterator it, bool isDirectionRig
 
 		if (isDirectionRight) {
 			sorted.push_back(*it);
-		} else {
+		}
+		else {
 			sorted.push_front(*it);
 		}
 
 		unsorted.erase(it);
-		
+
 		if (isDirectionRight) {
 			//std::cout << sorted.back().left << " " << sorted.back().right << std::endl;
 			return sorted.back();
-		} else {
+		}
+		else {
 			//std::cout << sorted.front().left << " " << sorted.front().right << std::endl;
 			return sorted.front();
 		}

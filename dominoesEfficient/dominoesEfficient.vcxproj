@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{95c7e211-47c4-4adc-83f5-d3d76718cca1}</ProjectGuid>
-    <RootNamespace>dominoes</RootNamespace>
+    <ProjectGuid>{9de757ec-7c1a-4613-84d0-0fc6d308111a}</ProjectGuid>
+    <RootNamespace>dominoesEfficient</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\collection.cpp" />
-    <ClCompile Include="dominoes.cpp" />
+    <ClCompile Include="dominoesEfficient.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\headers\collection.h" />

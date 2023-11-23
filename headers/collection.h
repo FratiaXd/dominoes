@@ -13,7 +13,6 @@ struct Domino {
 class Collection
 {
 private:
-	//Domino first;
 	std::list<Domino> unsorted;
 	std::list<Domino> sorted;
 	std::list<Domino>::iterator findDomino(std::string&, bool);
