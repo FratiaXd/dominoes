@@ -4,6 +4,7 @@ Collection::Collection(std::string firstDominoPath, std::string restDominoPath)
 {
 	sorted = readFiles(firstDominoPath);
 	unsorted = readFiles(restDominoPath);
+	//dominoPool = readFiles1(restDominoPath);
 }
 
 void Collection::sortCollection()
@@ -86,6 +87,22 @@ void Collection::displayCollection()
 		std::cout << i.left << ":" << i.right << " ";
 	}
 }
+
+//std::unordered_map<std::string, Domino> Collection::readFiles1(std::string dominoPath)
+//{
+//	std::ifstream filehandle{ dominoPath };
+//	std::unordered_map<std::string, Domino> fileDominoes;
+//	if (filehandle.fail()) {
+//		std::cout << "Specified file does not exist" << std::endl;
+//		return fileDominoes;
+//	}
+//	std::string text;
+//	while (std::getline(filehandle, text)) {
+//		Domino a = readDomino(text);
+//		fileDominoes.insert({ a.getKey(), a });
+//	}
+//	return fileDominoes;
+//}
 
 std::list<Domino> Collection::readFiles(std::string dominoPath)
 {
