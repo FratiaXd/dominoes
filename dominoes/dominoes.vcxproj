@@ -128,10 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\collection.cpp" />
+    <ClCompile Include="collectionWorst.cpp" />
     <ClCompile Include="dominoes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\headers\collection.h" />
+    <ClInclude Include="collectionWorst.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,7 +2,8 @@
 //
 
 #include <iostream>
-#include "../headers/collection.h"
+//#include "../headers/collection.h"
+#include "collectionWorst.h"
 
 int main()
 {

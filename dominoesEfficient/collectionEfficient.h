@@ -1,21 +1,4 @@
-#pragma once
-#include <string>
-#include <list>
-#include <unordered_map>
-#include <unordered_set>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-
-struct Domino {
-	std::string left;
-	std::string right;
-
-	std::string generateKey()
-	{
-		return left + ":" + right;
-	}
-};
+#include "../headers/collection.h"
 
 class CollectionEf
 {
