@@ -93,7 +93,7 @@ bool CollectionEf::isCompleted()
 
 void CollectionEf::displayCollection()
 {
-	for (Domino i : sorted) {
+	for (const Domino& i : sorted) {
 		std::cout << i.left << ":" << i.right << " ";
 	}
 }
@@ -104,4 +104,19 @@ void CollectionEf::removeFromUnsorted(std::string key)
 	matching[dominoToErase.left].erase(key);
 	matching[dominoToErase.right].erase(key);
 	unsorted.erase(key);
+}
+
+void CollectionEf::displ()
+{
+	int a = 0;
+	for (const auto& l : matching) {
+		std::cout << l.first << std::endl;
+		auto it = l.second.begin();
+		while (it != l.second.end()) {
+			std::cout << *it << std::endl;
+			it++;
+		}
+		a++;
+	}
+	std::cout << a << std::endl;
 }

@@ -3,17 +3,17 @@
 class Collection
 {
 private:
-	std::list<Domino> unsorted;
 	std::list<Domino> sorted;
-	std::list<Domino>::iterator findDomino(std::string&, bool);
-	Domino addDomino(std::list<Domino>::iterator, bool);
-	Domino readDomino(std::string);
+	std::map<std::string, std::set<std::string>> matching;
+	std::map<std::string, Domino> unsorted;
 public:
 	Collection(std::string, std::string);
-	void sortCollection();
-	Domino placeRight();
-	Domino placeLeft();
-	bool isCompleted();
+	void addDomino(Domino);
 	void displayCollection();
-	std::list<Domino> readFiles(std::string);
+	void sortCollection();
+	bool isCompleted();
+	Domino addToLeft(std::string);
+	Domino addToRight(std::string);
+	void removeFromUnsorted(std::string);
+	void displayM();
 };

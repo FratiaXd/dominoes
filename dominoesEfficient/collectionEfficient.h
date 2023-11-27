@@ -15,4 +15,5 @@ public:
 	Domino addToLeft(std::string);
 	Domino addToRight(std::string);
 	void removeFromUnsorted(std::string);
+	void displ();
 };

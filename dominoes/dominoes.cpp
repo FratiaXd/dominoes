@@ -11,8 +11,10 @@ int main()
         "C:/Users/Owner/Documents/UNI_Y3/SOFT_ENG/dominoes-test_data/1K/1K-input-uncoloured.txt");
 
     std::cout << std::endl;
-    d.sortCollection();
+    d.displayM();
+    //d.sortCollection();
     std::cout << std::endl;
+    //d.displayCollection();
     //readFiles1("C:/Users/Owner/Documents/UNI_Y3/SOFT_ENG/dominoes-test_data/example/example-starting-domino.txt");
     //readFiles2("C:/Users/Owner/Documents/UNI_Y3/SOFT_ENG/dominoes-test_data/example/example-input-uncoloured.txt");
 }
