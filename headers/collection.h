@@ -20,15 +20,15 @@ struct Domino {
 	}
 };
 
-
-class CollectionEf
+//template<typename MapType, typename SetType>
+class CollectionBase
 {
 private:
 	std::list<Domino> sorted;
 	std::unordered_map<std::string, std::unordered_set<std::string>> matching;
 	std::unordered_map<std::string, Domino> unsorted;
 public:
-	CollectionEf(std::string, std::string);
+	CollectionBase(std::string, std::string);
 	void addDomino(Domino);
 	void displayCollection();
 	void sortCollection();

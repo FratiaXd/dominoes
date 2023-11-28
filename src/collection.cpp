@@ -1,6 +1,6 @@
 #include "../headers/collection.h"
 
-CollectionEf::CollectionEf(std::string startFile, std::string restFile)
+CollectionBase::CollectionBase(std::string startFile, std::string restFile)
 {
 	std::ifstream firsthandle{ startFile };
 	std::string text;
@@ -24,7 +24,7 @@ CollectionEf::CollectionEf(std::string startFile, std::string restFile)
 	resthandle.close();
 }
 
-void CollectionEf::addDomino(Domino newDomino)
+void CollectionBase::addDomino(Domino newDomino)
 {
 	std::string key = newDomino.generateKey();
 	unsorted[key] = newDomino;
@@ -32,7 +32,7 @@ void CollectionEf::addDomino(Domino newDomino)
 	matching[newDomino.right].insert(key);
 }
 
-Domino CollectionEf::addToLeft()
+Domino CollectionBase::addToLeft()
 {
 	std::string dominoSide = sorted.front().left;
 	auto it = matching.find(dominoSide);
@@ -52,7 +52,7 @@ Domino CollectionEf::addToLeft()
 	return Domino();
 }
 
-Domino CollectionEf::addToRight()
+Domino CollectionBase::addToRight()
 {
 	std::string dominoSide = sorted.back().right;
 	auto it = matching.find(dominoSide);
@@ -72,7 +72,7 @@ Domino CollectionEf::addToRight()
 	return Domino();
 }
 
-void CollectionEf::sortCollection()
+void CollectionBase::sortCollection()
 {
 	if (unsorted.empty()) {
 		std::cout << "Collection not found" << std::endl;
@@ -88,19 +88,19 @@ void CollectionEf::sortCollection()
 	}
 }
 
-bool CollectionEf::isCompleted()
+bool CollectionBase::isCompleted()
 {
 	return unsorted.empty();
 }
 
-void CollectionEf::displayCollection()
+void CollectionBase::displayCollection()
 {
 	for (const Domino& i : sorted) {
 		std::cout << i.left << ":" << i.right << " ";
 	}
 }
 
-void CollectionEf::removeFromUnsorted(std::string key)
+void CollectionBase::removeFromUnsorted(std::string key)
 {
 	Domino dominoToErase = unsorted[key];
 	matching[dominoToErase.left].erase(key);
