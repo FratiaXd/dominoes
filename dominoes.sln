@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dominoesEfficient", "domino
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "timing_tests", "timing_tests\timing_tests.vcxproj", "{98E5EBD4-C310-4B3F-A65D-CA4777EFC3AA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "convolutedAlgorithm", "convolutedAlgorithm\convolutedAlgorithm.vcxproj", "{10B1FD93-F76A-45C1-B6A8-A313F7A9FBEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{98E5EBD4-C310-4B3F-A65D-CA4777EFC3AA}.Release|x64.Build.0 = Release|x64
 		{98E5EBD4-C310-4B3F-A65D-CA4777EFC3AA}.Release|x86.ActiveCfg = Release|Win32
 		{98E5EBD4-C310-4B3F-A65D-CA4777EFC3AA}.Release|x86.Build.0 = Release|Win32
+		{10B1FD93-F76A-45C1-B6A8-A313F7A9FBEE}.Debug|x64.ActiveCfg = Debug|x64
+		{10B1FD93-F76A-45C1-B6A8-A313F7A9FBEE}.Debug|x64.Build.0 = Debug|x64
+		{10B1FD93-F76A-45C1-B6A8-A313F7A9FBEE}.Debug|x86.ActiveCfg = Debug|Win32
+		{10B1FD93-F76A-45C1-B6A8-A313F7A9FBEE}.Debug|x86.Build.0 = Debug|Win32
+		{10B1FD93-F76A-45C1-B6A8-A313F7A9FBEE}.Release|x64.ActiveCfg = Release|x64
+		{10B1FD93-F76A-45C1-B6A8-A313F7A9FBEE}.Release|x64.Build.0 = Release|x64
+		{10B1FD93-F76A-45C1-B6A8-A313F7A9FBEE}.Release|x86.ActiveCfg = Release|Win32
+		{10B1FD93-F76A-45C1-B6A8-A313F7A9FBEE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
