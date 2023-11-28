@@ -1,6 +1,7 @@
 #include "../headers/collection.h"
 
-CollectionBase::CollectionBase(std::string startFile, std::string restFile)
+template<typename MatchingMapType, typename UnorderedMapType>
+CollectionBase<MatchingMapType, UnorderedMapType>::CollectionBase(std::string startFile, std::string restFile)
 {
 	std::ifstream firsthandle{ startFile };
 	std::string text;
@@ -24,7 +25,8 @@ CollectionBase::CollectionBase(std::string startFile, std::string restFile)
 	resthandle.close();
 }
 
-void CollectionBase::addDomino(Domino newDomino)
+template<typename MatchingMapType, typename UnorderedMapType>
+void CollectionBase<MatchingMapType, UnorderedMapType>::addDomino(Domino newDomino)
 {
 	std::string key = newDomino.generateKey();
 	unsorted[key] = newDomino;
@@ -32,7 +34,8 @@ void CollectionBase::addDomino(Domino newDomino)
 	matching[newDomino.right].insert(key);
 }
 
-Domino CollectionBase::addToLeft()
+template<typename MatchingMapType, typename UnorderedMapType>
+Domino CollectionBase<MatchingMapType, UnorderedMapType>::addToLeft()
 {
 	std::string dominoSide = sorted.front().left;
 	auto it = matching.find(dominoSide);
@@ -52,7 +55,8 @@ Domino CollectionBase::addToLeft()
 	return Domino();
 }
 
-Domino CollectionBase::addToRight()
+template<typename MatchingMapType, typename UnorderedMapType>
+Domino CollectionBase<MatchingMapType, UnorderedMapType>::addToRight()
 {
 	std::string dominoSide = sorted.back().right;
 	auto it = matching.find(dominoSide);
@@ -72,7 +76,8 @@ Domino CollectionBase::addToRight()
 	return Domino();
 }
 
-void CollectionBase::sortCollection()
+template<typename MatchingMapType, typename UnorderedMapType>
+void CollectionBase<MatchingMapType, UnorderedMapType>::sortCollection()
 {
 	if (unsorted.empty()) {
 		std::cout << "Collection not found" << std::endl;
@@ -88,22 +93,28 @@ void CollectionBase::sortCollection()
 	}
 }
 
-bool CollectionBase::isCompleted()
+template<typename MatchingMapType, typename UnorderedMapType>
+bool CollectionBase<MatchingMapType, UnorderedMapType>::isCompleted()
 {
 	return unsorted.empty();
 }
 
-void CollectionBase::displayCollection()
+template<typename MatchingMapType, typename UnorderedMapType>
+void CollectionBase<MatchingMapType, UnorderedMapType>::displayCollection()
 {
 	for (const Domino& i : sorted) {
 		std::cout << i.left << ":" << i.right << " ";
 	}
 }
 
-void CollectionBase::removeFromUnsorted(std::string key)
+template<typename MatchingMapType, typename UnorderedMapType>
+void CollectionBase<MatchingMapType, UnorderedMapType>::removeFromUnsorted(std::string key)
 {
 	Domino dominoToErase = unsorted[key];
 	matching[dominoToErase.left].erase(key);
 	matching[dominoToErase.right].erase(key);
 	unsorted.erase(key);
 }
+
+template class CollectionBase<std::unordered_map<std::string, std::unordered_set<std::string>>, std::unordered_map<std::string, Domino>>;
+template class CollectionBase<std::map<std::string, std::set<std::string>>, std::map<std::string, Domino>>;

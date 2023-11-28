@@ -2,8 +2,6 @@
 #include <chrono>
 #include "../headers/collection.h"
 #include <utility>
-#include <map>
-#include "../dominoes/collectionWorst.h"
 
 using std::chrono::steady_clock;
 // using std::chrono::milliseconds;
@@ -19,7 +17,8 @@ nanoseconds timingTest_unorderedmap_constructor(unsigned long long int numberOfD
     
     steady_clock::time_point startTime = steady_clock::now();
 
-    CollectionEf one(starting, restLine);
+    CollectionBase<std::unordered_map<std::string, std::unordered_set<std::string>>,
+        std::unordered_map<std::string, Domino>> one(starting, restLine);
 
     steady_clock::time_point finishTime = steady_clock::now();
 
@@ -35,7 +34,8 @@ nanoseconds timingTest_unorderedmap_sorting(unsigned long long int numberOfDomin
     std::string starting = "../../dominoes-test_data/" + filename + "/" + filename + "-starting-domino.txt";
     std::string restLine = "../../dominoes-test_data/" + filename + "/" + filename + "-input-uncoloured.txt";
 
-    CollectionEf one(starting, restLine);
+    CollectionBase<std::unordered_map<std::string, std::unordered_set<std::string>>,
+        std::unordered_map<std::string, Domino>> one(starting, restLine);
 
     steady_clock::time_point startTime = steady_clock::now();
 
@@ -57,7 +57,8 @@ nanoseconds timingTest_orderedmap_constructor(unsigned long long int numberOfDom
 
     steady_clock::time_point startTime = steady_clock::now();
 
-    Collection one(starting, restLine);
+    CollectionBase<std::map<std::string, std::set<std::string>>,
+        std::map<std::string, Domino>> one(starting, restLine);
 
     steady_clock::time_point finishTime = steady_clock::now();
 
@@ -73,7 +74,8 @@ nanoseconds timingTest_orderedmap_sorting(unsigned long long int numberOfDominoe
     std::string starting = "../../dominoes-test_data/" + filename + "/" + filename + "-starting-domino.txt";
     std::string restLine = "../../dominoes-test_data/" + filename + "/" + filename + "-input-uncoloured.txt";
 
-    Collection one(starting, restLine);
+    CollectionBase<std::map<std::string, std::set<std::string>>,
+        std::map<std::string, Domino>> one(starting, restLine);
 
     steady_clock::time_point startTime = steady_clock::now();
 
