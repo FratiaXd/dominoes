@@ -128,12 +128,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\collection.cpp" />
-    <ClCompile Include="collectionEfficient.cpp" />
     <ClCompile Include="dominoesEfficient.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\headers\collection.h" />
-    <ClInclude Include="collectionEfficient.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
