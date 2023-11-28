@@ -7,8 +7,11 @@
 
 int main()
 {
-    Collection d("C:/Users/Owner/Documents/UNI_Y3/SOFT_ENG/dominoes-test_data/1K/1K-starting-domino.txt",
-        "C:/Users/Owner/Documents/UNI_Y3/SOFT_ENG/dominoes-test_data/1K/1K-input-uncoloured.txt");
+    /*Collection d("C:/Users/Owner/Documents/UNI_Y3/SOFT_ENG/dominoes-test_data/1K/1K-starting-domino.txt",
+        "C:/Users/Owner/Documents/UNI_Y3/SOFT_ENG/dominoes-test_data/1K/1K-input-uncoloured.txt");*/
+
+    Collection d("../../dominoes-test_data/3K/3K-starting-domino.txt",
+        "../../dominoes-test_data/3K/3K-input-uncoloured.txt");
 
     std::cout << std::endl;
     //d.displayM();
