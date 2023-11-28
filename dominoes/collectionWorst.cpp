@@ -32,8 +32,8 @@ void Collection::sortCollection()
 	}
 	bool addSuccess = true;
 	while (!isCompleted() && addSuccess) {
-		Domino leftDomino = addToLeft(sorted.front().left);
-		Domino rightDomino = addToRight(sorted.back().right);
+		Domino leftDomino = addToLeft();
+		Domino rightDomino = addToRight();
 		if (leftDomino.left.empty() || rightDomino.right.empty()) {
 			addSuccess = false;
 		}
@@ -60,8 +60,9 @@ void Collection::displayCollection()
 	}
 }
 
-Domino Collection::addToLeft(std::string dominoSide)
+Domino Collection::addToLeft()
 {
+	std::string dominoSide = sorted.front().left;
 	auto it = matching.find(dominoSide);
 	if (it != matching.end()) {
 		for (std::string key : it->second) {
@@ -79,8 +80,9 @@ Domino Collection::addToLeft(std::string dominoSide)
 	return Domino();
 }
 
-Domino Collection::addToRight(std::string dominoSide)
+Domino Collection::addToRight()
 {
+	std::string dominoSide = sorted.back().right;
 	auto it = matching.find(dominoSide);
 	if (it != matching.end()) {
 		for (std::string key : it->second) {

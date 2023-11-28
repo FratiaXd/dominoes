@@ -32,8 +32,9 @@ void CollectionEf::addDomino(Domino newDomino)
 	matching[newDomino.right].insert(key);
 }
 
-Domino CollectionEf::addToLeft(std::string dominoSide)
+Domino CollectionEf::addToLeft()
 {
+	std::string dominoSide = sorted.front().left;
 	auto it = matching.find(dominoSide);
 	if (it != matching.end()) {
 		for (std::string key : it->second) {
@@ -51,8 +52,9 @@ Domino CollectionEf::addToLeft(std::string dominoSide)
 	return Domino();
 }
 
-Domino CollectionEf::addToRight(std::string dominoSide)
+Domino CollectionEf::addToRight()
 {
+	std::string dominoSide = sorted.back().right;
 	auto it = matching.find(dominoSide);
 	if (it != matching.end()) {
 		for (std::string key : it->second) {
@@ -78,8 +80,8 @@ void CollectionEf::sortCollection()
 	}
 	bool addSuccess = true;
 	while (!isCompleted() && addSuccess) {
-		Domino leftDomino = addToLeft(sorted.front().left);
-		Domino rightDomino = addToRight(sorted.back().right);
+		Domino leftDomino = addToLeft();
+		Domino rightDomino = addToRight();
 		if (leftDomino.left.empty() || rightDomino.right.empty()) {
 			addSuccess = false;
 		}

@@ -13,8 +13,8 @@ public:
 	void displayCollection();
 	void sortCollection();
 	bool isCompleted();
-	Domino addToLeft(std::string);
-	Domino addToRight(std::string);
+	Domino addToLeft();
+	Domino addToRight();
 	void removeFromUnsorted(std::string);
 	void displayM();
 };
