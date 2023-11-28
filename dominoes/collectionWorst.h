@@ -1,4 +1,5 @@
 #include "../headers/collection.h"
+#pragma once
 
 class Collection
 {
