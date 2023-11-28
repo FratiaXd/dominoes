@@ -3,6 +3,7 @@
 #include "../headers/collection.h"
 #include <utility>
 #include <map>
+#include "../dominoes/collectionWorst.h"
 
 using std::chrono::steady_clock;
 // using std::chrono::milliseconds;
@@ -56,7 +57,7 @@ nanoseconds timingTest_orderedmap_constructor(unsigned long long int numberOfDom
 
     steady_clock::time_point startTime = steady_clock::now();
 
-    CollectionEf one(starting, restLine);
+    Collection one(starting, restLine);
 
     steady_clock::time_point finishTime = steady_clock::now();
 
@@ -72,7 +73,7 @@ nanoseconds timingTest_orderedmap_sorting(unsigned long long int numberOfDominoe
     std::string starting = "../../dominoes-test_data/" + filename + "/" + filename + "-starting-domino.txt";
     std::string restLine = "../../dominoes-test_data/" + filename + "/" + filename + "-input-uncoloured.txt";
 
-    CollectionEf one(starting, restLine);
+    Collection one(starting, restLine);
 
     steady_clock::time_point startTime = steady_clock::now();
 
@@ -89,9 +90,9 @@ nanoseconds timingTest_orderedmap_sorting(unsigned long long int numberOfDominoe
 
 int main()
 {
-    const unsigned long long int numberOfDominoes = 1000;
+    const unsigned long long int numberOfDominoes = 10000;
 
-    const std::string name = "1K";
+    const std::string name = "10K";
 
     nanoseconds meanTimePerConstructorUnor = timingTest_unorderedmap_constructor(numberOfDominoes, name);
     nanoseconds meanTimePerSortingUnor = timingTest_unorderedmap_sorting(numberOfDominoes, name);

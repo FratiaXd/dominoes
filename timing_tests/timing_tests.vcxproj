@@ -127,10 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\dominoes\collectionWorst.cpp" />
     <ClCompile Include="..\src\collection.cpp" />
     <ClCompile Include="timing_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\dominoes\collectionWorst.h" />
     <ClInclude Include="..\headers\collection.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
