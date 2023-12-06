@@ -4,15 +4,11 @@
 #include <iostream>
 #include "../headers/collection.h"
 
-int main()
+int main(int argc, char* argv[])
 {
     CollectionBase<std::map<std::string, std::set<std::string>>, 
-        std::map<std::string, Domino>> d("../../dominoes-test_data/3K/3K-starting-domino.txt",
-        "../../dominoes-test_data/3K/3K-input-uncoloured.txt");
+        std::map<std::string, Domino>> d(argv[1], argv[2]);
 
-    std::cout << std::endl;
     d.sortCollection();
-    d.displayCollection();
-    std::cout << std::endl;
 }
 

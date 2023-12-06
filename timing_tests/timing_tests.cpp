@@ -5,12 +5,12 @@
 
 using std::chrono::steady_clock;
 // using std::chrono::milliseconds;
-// using std::chrono::microseconds;
-using std::chrono::nanoseconds;
+using std::chrono::microseconds;
+//using std::chrono::nanoseconds;
 using std::chrono::duration_cast;
 
 
-nanoseconds timingTest_unorderedmap_constructor(unsigned long long int numberOfDominoes, std::string filename)
+microseconds timingTest_unorderedmap_constructor(std::string filename)
 {
     std::string starting = "../../dominoes-test_data/" + filename + "/" + filename + "-starting-domino.txt";
     std::string restLine = "../../dominoes-test_data/" + filename + "/" + filename + "-input-uncoloured.txt";
@@ -22,14 +22,12 @@ nanoseconds timingTest_unorderedmap_constructor(unsigned long long int numberOfD
 
     steady_clock::time_point finishTime = steady_clock::now();
 
-    nanoseconds timeTaken = duration_cast<nanoseconds>(finishTime - startTime);
+    microseconds timeTaken = duration_cast<microseconds>(finishTime - startTime);
 
-    nanoseconds meanTimePerLookup = timeTaken / numberOfDominoes;
-
-    return meanTimePerLookup;
+    return timeTaken;
 }
 
-nanoseconds timingTest_unorderedmap_sorting(unsigned long long int numberOfDominoes, std::string filename)
+microseconds timingTest_unorderedmap_sorting(std::string filename)
 {
     std::string starting = "../../dominoes-test_data/" + filename + "/" + filename + "-starting-domino.txt";
     std::string restLine = "../../dominoes-test_data/" + filename + "/" + filename + "-input-uncoloured.txt";
@@ -43,14 +41,12 @@ nanoseconds timingTest_unorderedmap_sorting(unsigned long long int numberOfDomin
 
     steady_clock::time_point finishTime = steady_clock::now();
 
-    nanoseconds timeTaken = duration_cast<nanoseconds>(finishTime - startTime);
+    microseconds timeTaken = duration_cast<microseconds>(finishTime - startTime);
 
-    nanoseconds meanTimePerLookup = timeTaken / numberOfDominoes;
-
-    return meanTimePerLookup;
+    return timeTaken;
 }
 
-nanoseconds timingTest_orderedmap_constructor(unsigned long long int numberOfDominoes, std::string filename)
+microseconds timingTest_orderedmap_constructor(std::string filename)
 {
     std::string starting = "../../dominoes-test_data/" + filename + "/" + filename + "-starting-domino.txt";
     std::string restLine = "../../dominoes-test_data/" + filename + "/" + filename + "-input-uncoloured.txt";
@@ -62,14 +58,12 @@ nanoseconds timingTest_orderedmap_constructor(unsigned long long int numberOfDom
 
     steady_clock::time_point finishTime = steady_clock::now();
 
-    nanoseconds timeTaken = duration_cast<nanoseconds>(finishTime - startTime);
+    microseconds timeTaken = duration_cast<microseconds>(finishTime - startTime);
 
-    nanoseconds meanTimePerLookup = timeTaken / numberOfDominoes;
-
-    return meanTimePerLookup;
+    return timeTaken;
 }
 
-nanoseconds timingTest_orderedmap_sorting(unsigned long long int numberOfDominoes, std::string filename)
+microseconds timingTest_orderedmap_sorting(std::string filename)
 {
     std::string starting = "../../dominoes-test_data/" + filename + "/" + filename + "-starting-domino.txt";
     std::string restLine = "../../dominoes-test_data/" + filename + "/" + filename + "-input-uncoloured.txt";
@@ -83,38 +77,36 @@ nanoseconds timingTest_orderedmap_sorting(unsigned long long int numberOfDominoe
 
     steady_clock::time_point finishTime = steady_clock::now();
 
-    nanoseconds timeTaken = duration_cast<nanoseconds>(finishTime - startTime);
+    microseconds timeTaken = duration_cast<microseconds>(finishTime - startTime);
 
-    nanoseconds meanTimePerLookup = timeTaken / numberOfDominoes;
-
-    return meanTimePerLookup;
+    return timeTaken;
 }
 
 int main()
 {
-    const unsigned long long int numberOfDominoes = 10000;
+    const unsigned long long int numberOfDominoes = 100000;
 
-    const std::string name = "10K";
+    const std::string name = "100K";
 
-    nanoseconds meanTimePerConstructorUnor = timingTest_unorderedmap_constructor(numberOfDominoes, name);
-    nanoseconds meanTimePerSortingUnor = timingTest_unorderedmap_sorting(numberOfDominoes, name);
-    nanoseconds meanTimePerLookupUnor = meanTimePerConstructorUnor + meanTimePerSortingUnor;
+    microseconds timeForConstructorUnorMap = timingTest_unorderedmap_constructor(name);
+    microseconds timeForSortingUnorMap = timingTest_unorderedmap_sorting(name);
+    microseconds timeOverallUnorMap = timeForConstructorUnorMap + timeForSortingUnorMap;
 
-    nanoseconds meanTimePerConstructorOr = timingTest_orderedmap_constructor(numberOfDominoes, name);
-    nanoseconds meanTimePerSortingOr = timingTest_orderedmap_sorting(numberOfDominoes, name);
-    nanoseconds meanTimePerLookupOr = meanTimePerConstructorOr + meanTimePerSortingOr;
+    microseconds timeForConstructorMap = timingTest_orderedmap_constructor(name);
+    microseconds timeForSortingMap = timingTest_orderedmap_sorting(name);
+    microseconds timeOverallMap = timeForConstructorMap + timeForSortingMap;
 
-    std::cout << "Dictionary being tested: std::unordered_map"                                          << std::endl;
-    std::cout << "Performing " << numberOfDominoes << " random lookups."                                << std::endl;
-    std::cout << "Mean time taken per constructor: " << meanTimePerConstructorUnor.count() << " nanoseconds."   << std::endl;
-    std::cout << "Mean time taken per sorting: " << meanTimePerSortingUnor.count() << " nanoseconds."       << std::endl;
-    std::cout << "Mean time taken overall: " << meanTimePerLookupUnor.count() << " nanoseconds." << std::endl << std::endl;
+    std::cout << "Dictionary being tested: std::unordered_map"                                                  << std::endl;
+    std::cout << "Domino collection size: " << numberOfDominoes                                                 << std::endl;
+    std::cout << "Time taken for constructor: " << timeForConstructorUnorMap.count() << " microseconds."   << std::endl;
+    std::cout << "Time taken for sorting: " << timeForSortingUnorMap.count() << " microseconds."           << std::endl;
+    std::cout << "Time taken overall: " << timeOverallUnorMap.count() << " microseconds."                << std::endl << std::endl;
 
-    std::cout << "Dictionary being tested: std::ordered_map" << std::endl;
-    std::cout << "Performing " << numberOfDominoes << " random lookups." << std::endl;
-    std::cout << "Mean time taken per constructor: " << meanTimePerConstructorOr.count() << " nanoseconds." << std::endl;
-    std::cout << "Mean time taken per sorting: " << meanTimePerSortingOr.count() << " nanoseconds." << std::endl;
-    std::cout << "Mean time taken overall: " << meanTimePerLookupOr.count() << " nanoseconds." << std::endl << std::endl;
+    std::cout << "Dictionary being tested: std::map"                                                    << std::endl;
+    std::cout << "Domino collection size: " << numberOfDominoes                                                 << std::endl;
+    std::cout << "Time taken for constructor: " << timeForConstructorMap.count() << " microseconds."     << std::endl;
+    std::cout << "Time taken for sorting: " << timeForSortingMap.count() << " microseconds."             << std::endl;
+    std::cout << "Time taken overall: " << timeOverallMap.count() << " microseconds."                  << std::endl << std::endl;
 
     return 0;
 }

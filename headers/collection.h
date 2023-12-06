@@ -12,11 +12,13 @@
 #include <map>
 #include <set>
 
+//Represents Domino
 struct Domino {
 	std::string left;
 	std::string right;
 
 	Domino() = default;
+
 	Domino(std::string leftSide, std::string rightSide) {
 		leftSide = left;
 		rightSide = right;
@@ -28,24 +30,24 @@ struct Domino {
 	}
 };
 
+
+//Templates for average-case and worst-case time complexities
 template<typename MatchingMapType, typename UnorderedMapType>
 class CollectionBase
 {
 private:
 	std::list<Domino> sorted;
-	//std::unordered_map<std::string, std::unordered_set<std::string>> matching;
-	//std::unordered_map<std::string, Domino> unsorted;
 	MatchingMapType matching;
 	UnorderedMapType unsorted;
 public:
 	CollectionBase(std::string, std::string);
-	void addDomino(Domino);
+	void addDomino(Domino&);
 	void displayCollection();
 	void sortCollection();
 	bool isCompleted();
 	Domino addToLeft();
 	Domino addToRight();
-	void removeFromUnsorted(std::string);
+	void removeFromUnsorted(std::string&);
 };
 
 #endif // !COLLECTION_H

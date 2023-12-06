@@ -1,14 +1,11 @@
 #include "../headers/collection.h"
 #include <iostream>
 
-int main()
+int main(int argc, char* argv[])
 {
     CollectionBase<std::unordered_map<std::string, std::unordered_set<std::string>>,
-        std::unordered_map<std::string, Domino>> d("../../dominoes-test_data/3K/3K-starting-domino.txt",
-        "../../dominoes-test_data/3K/3K-input-uncoloured.txt");
+        std::unordered_map<std::string, Domino>> d(argv[1], argv[2]);
+
     d.sortCollection();
-    std::cout << std::endl;
-    d.displayCollection();
-    std::cout << std::endl;
 }
 
