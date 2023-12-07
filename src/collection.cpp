@@ -68,12 +68,12 @@ Domino CollectionBase<MatchingMapType, UnorderedMapType>::addToLeft()
 	if (it != matching.end()) {
 		for (std::string key : it->second) {						//Loops through selected set/unordered_set by previously found iterator value for matching map/unordered_map
 			Domino unsortedDomino = unsorted[key];
-			if (unsortedDomino.left == dominoSide) {
+			if (unsortedDomino.left == dominoSide) {					//Swaps domino if positioned backwards
 				std::swap(unsortedDomino.left, unsortedDomino.right);
 			}
-			if (unsortedDomino.right == dominoSide) {
+			if (unsortedDomino.right == dominoSide) {					
 				sorted.push_front(unsortedDomino);
-				removeFromUnsorted(key);
+				removeFromUnsorted(key);							//Removes now sorted domino from matching and unsorted
 				return unsortedDomino;
 			}
 		}
@@ -81,7 +81,7 @@ Domino CollectionBase<MatchingMapType, UnorderedMapType>::addToLeft()
 	return Domino();
 }
 
-//Finds first domino that can be added to the right side of the sorted domino list and adds it
+//Mirrors addToLeft()
 template<typename MatchingMapType, typename UnorderedMapType>
 Domino CollectionBase<MatchingMapType, UnorderedMapType>::addToRight()
 {
@@ -117,6 +117,7 @@ void CollectionBase<MatchingMapType, UnorderedMapType>::displayCollection()
 	}
 }
 
+//Erases sorted domino from matching and unsorted
 template<typename MatchingMapType, typename UnorderedMapType>
 void CollectionBase<MatchingMapType, UnorderedMapType>::removeFromUnsorted(std::string& key)
 {
