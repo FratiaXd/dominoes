@@ -18,12 +18,12 @@
     <ClCompile Include="Convoluted.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="collectionC.cpp">
+    <ClCompile Include="..\src\collectionC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="collectionC.h">
+    <ClInclude Include="..\headers\collectionC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -127,11 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="collectionC.cpp" />
+    <ClCompile Include="..\src\collectionC.cpp" />
     <ClCompile Include="Convoluted.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="collectionC.h" />
+    <ClInclude Include="..\headers\collectionC.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

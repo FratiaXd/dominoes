@@ -21,9 +21,15 @@
     <ClCompile Include="..\src\collection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\collectionC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\headers\collection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\headers\collectionC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

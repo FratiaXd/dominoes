@@ -1,4 +1,4 @@
-#include "collectionC.h"
+#include "../headers/collectionC.h"
 
 CollectionC::CollectionC(std::string starting, std::string rest)
 {
