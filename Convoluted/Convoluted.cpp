@@ -1,9 +1,8 @@
 #include <iostream>
 #include "collectionC.h"
 
-int main()
+int main(int argc, char* argv[])
 {
-    CollectionC a("../../dominoes-test_data/10K/10K-starting-domino.txt",
-        "../../dominoes-test_data/10K/10K-input-coloured.txt");
+    CollectionC a(argv[1], argv[2]);
     a.displayLine();
 }
