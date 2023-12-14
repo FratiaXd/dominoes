@@ -103,12 +103,14 @@ Domino CollectionBase<MatchingMapType, UnorderedMapType>::addToRight()
 	return Domino();
 }
 
+//Checks if there are any dominoes left in the unsorted
 template<typename MatchingMapType, typename UnorderedMapType>
 bool CollectionBase<MatchingMapType, UnorderedMapType>::isCompleted()
 {
 	return unsorted.empty();
 }
 
+//Displays the sorted collection
 template<typename MatchingMapType, typename UnorderedMapType>
 void CollectionBase<MatchingMapType, UnorderedMapType>::displayCollection()
 {
